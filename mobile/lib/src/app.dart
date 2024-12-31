@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/src/presentation/screens/loginpage.dart';
+import 'package:mobile/src/presentation/screens/auth/loginpage.dart';
 class myapp extends StatefulWidget {
   const myapp({super.key});
 

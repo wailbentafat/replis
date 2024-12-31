@@ -13,6 +13,11 @@ class LoginViewModels with ChangeNotifier {
 
 
   Future<void> login(String email ,String password)async {
+    if (email.isEmpty || password.isEmpty) {
+      errmsg="Please enter email and password";
+      notifyListeners();
+      return;
+    }
     isloading=true;
     errmsg="";
     notifyListeners();
