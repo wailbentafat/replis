@@ -6,7 +6,7 @@ import 'package:mobile/src/presentation/screens/auth/forgetpassword.dart';
 import 'package:mobile/src/presentation/screens/home/home.dart';
 import 'package:mobile/src/presentation/widgets/textfield.dart';
 import 'package:provider/provider.dart';
-import '../../view_models/login_view_models.dart';
+import '../../view_models/auth/login_view_models.dart';
 
 class loginpage extends StatelessWidget {
   const loginpage({super.key});

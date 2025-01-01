@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/src/app.dart';
-import 'package:mobile/src/presentation/view_models/login_view_models.dart';
+import 'package:mobile/src/presentation/view_models/auth/login_view_models.dart';
 import 'package:provider/provider.dart';
 
 void main() {
