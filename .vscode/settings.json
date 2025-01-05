@@ -1,5 +1,6 @@
 {
     "[codeblock]": {
         "files.encoding": "windows1252"
-    }
+    },
+    "cmake.ignoreCMakeListsMissing": true
 }
