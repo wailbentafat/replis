@@ -8,4 +8,9 @@ class texts{
   static const String passwordlabel="Enter your password";
   static const String emaillabel="youremail@gmail.com";
   static const String Forgetpassword="Forget Password?";
+   static const String acceuil = "acceuil";
+  static const String leaderboard = "leaderboard";
+  static const String mesAllerts = "Mes allerts";
+  static const String userName = "User Name";
+  static const String logout = "logout";
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/src/presentation/screens/auth/loginpage.dart';
+import 'package:mobile/src/presentation/screens/home/layout.dart';
 class myapp extends StatefulWidget {
   const myapp({super.key});
 
@@ -16,7 +16,7 @@ class _myappState extends State<myapp> {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
-       home: const loginpage(),
+       home: const Layout(),
     );
   }
 }
