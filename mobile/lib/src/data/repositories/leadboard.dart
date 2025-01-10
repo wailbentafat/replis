@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:mobile/src/data/models/leaderboard.dart';
 import 'package:mobile/src/data/service/leaderboard.dart';
 
@@ -7,6 +8,12 @@ class Leadboardrepo {
   Leadboardrepo(this.service);
 
   Future<List<Leaderboardmodel>> getleaderboard() {
-    return service.fetchLeaderboard();
+    debugPrint("getleaderboard");
+    if (service.fetchLeaderboard() != null) {
+      return service.fetchLeaderboard();
+    }
+    else{
+      debugPrint("null");
+      return  service.fetchLeaderboard();}
   }
 }

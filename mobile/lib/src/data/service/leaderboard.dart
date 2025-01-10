@@ -1,9 +1,11 @@
 import 'package:mobile/src/data/models/leaderboard.dart';
-
+import 'package:flutter/material.dart';
 class Leaderboardservice {
   //if theres no connection fetch from the db else fetch from the api
    Future<List<Leaderboardmodel>> fetchLeaderboard() async {
+    debugPrint("fetchLeaderboard");
     await Future.delayed(Duration(seconds: 2));
+    debugPrint("fetchLeaderboard waiting 2 ");
 
     List<Map<String, dynamic>> simulatedData = [
       {
@@ -37,6 +39,10 @@ class Leaderboardservice {
         .map((data) => Leaderboardmodel.fromJson(data))
         .toList();
 
+    leaderboard.sort((a, b) => b.score.compareTo(a.score));
+
+ 
+    
     return leaderboard;
   }
 

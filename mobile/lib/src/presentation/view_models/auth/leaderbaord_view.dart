@@ -13,15 +13,19 @@ class LeaderbaordView extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
     try {
+      debugPrint("raya7 nfetcher");
       leaderboard = await leadboarddomain.getleaderboard();
-      isLoading = false; 
+      debugPrint("mchat normal");
+      print(isLoading);
+
+      isLoading = false;
+      notifyListeners();
     } catch (e) {
       error = e.toString();
       isLoading = false;
-      print(
-          'Error fetching leaderboard: $error'); 
+      print('Error fetching leaderboard: $error');
+      notifyListeners();
     }
-
-    notifyListeners();
+    print(isLoading);
   }
 }
