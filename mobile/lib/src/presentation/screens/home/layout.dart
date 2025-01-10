@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/src/core/constant/colors.dart';
+import 'package:mobile/src/data/repositories/leadboard.dart';
+import 'package:mobile/src/data/service/leaderboard.dart';
+import 'package:mobile/src/domain/use_case/leaderboarddomain.dart';
 import 'package:mobile/src/presentation/screens/home/home.dart';
 import 'package:mobile/src/core/constant/text.dart';
 import 'package:mobile/src/presentation/screens/main/alerts.dart';
@@ -19,7 +22,7 @@ class _LayoutState extends State<Layout> {
   @override
   void initState() {
     super.initState();
-    _appbartext = texts.acceuil; 
+    _appbartext = texts.acceuil;
     _page = home();
   }
 
@@ -51,22 +54,20 @@ class _LayoutState extends State<Layout> {
       ),
       body: _page,
       drawer: Drawer(
-        backgroundColor: Colorspick.primaryColor,  
+        backgroundColor: Colorspick.primaryColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Align(
               alignment: Alignment.topRight,
-              child: Builder(
-                builder: (context) {
-                  return IconButton(
-                    onPressed: () {
-                      Scaffold.of(context).closeDrawer();
-                    },
-                    icon: Icon(Icons.close, color: Colors.white), 
-                  );
-                }
-              ),
+              child: Builder(builder: (context) {
+                return IconButton(
+                  onPressed: () {
+                    Scaffold.of(context).closeDrawer();
+                  },
+                  icon: Icon(Icons.close, color: Colors.white),
+                );
+              }),
             ),
             SizedBox(height: 30),
             CircleAvatar(
@@ -74,15 +75,14 @@ class _LayoutState extends State<Layout> {
               radius: 40,
               child: Container(
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(width: 2, color: Colors.black)
-                ),
+                    shape: BoxShape.circle,
+                    border: Border.all(width: 2, color: Colors.black)),
               ),
             ),
             Align(
               alignment: Alignment.topCenter,
               child: Text(
-                texts.userName, 
+                texts.userName,
                 style: TextStyle(fontSize: 20),
               ),
             ),
@@ -93,7 +93,7 @@ class _LayoutState extends State<Layout> {
                 height: 2,
                 indent: 10,
                 endIndent: 10,
-                color: Colors.white, 
+                color: Colors.white,
                 thickness: 3,
               ),
             ),
@@ -102,33 +102,33 @@ class _LayoutState extends State<Layout> {
               child: ListTile(
                 selectedColor: Colorspick.selectedcolro,
                 title: Text(
-                  texts.acceuil,  
+                  texts.acceuil,
                   style: TextStyle(
                     fontSize: 14,
-                    color: _appbartext == texts.acceuil 
-                        ? Colorspick.textlidcolor 
+                    color: _appbartext == texts.acceuil
+                        ? Colorspick.textlidcolor
                         : Colorspick.selectedtext,
                   ),
                 ),
                 leading: Icon(
                   Icons.home_max_outlined,
-                  color: _appbartext == texts.acceuil 
-                        ? Colorspick.textlidcolor 
-                        : Colorspick.selectedtext,
+                  color: _appbartext == texts.acceuil
+                      ? Colorspick.textlidcolor
+                      : Colorspick.selectedtext,
                 ),
                 onTap: () {
                   setState(() {
-                    _appbartext = texts.acceuil; 
+                    _appbartext = texts.acceuil;
                     _page = home();
                   });
                 },
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10),  
+              padding: const EdgeInsets.only(top: 10),
               child: ListTile(
                 title: Text(
-                  texts.leaderboard,  
+                  texts.leaderboard,
                   style: TextStyle(
                     fontSize: 14,
                     color: _appbartext == texts.leaderboard
@@ -139,22 +139,22 @@ class _LayoutState extends State<Layout> {
                 leading: Icon(
                   Icons.person_2_outlined,
                   color: _appbartext == texts.leaderboard
-                        ? Colorspick.textlidcolor
-                        : Colorspick.selectedtext, 
+                      ? Colorspick.textlidcolor
+                      : Colorspick.selectedtext,
                 ),
                 onTap: () {
                   setState(() {
-                    _appbartext = texts.leaderboard; 
-                    _page = Leadboard();
+                    _appbartext = texts.leaderboard;
+                    _page = const LeaderboardScreen();
                   });
                 },
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10), 
+              padding: const EdgeInsets.only(top: 10),
               child: ListTile(
                 title: Text(
-                  texts.mesAllerts, 
+                  texts.mesAllerts,
                   style: TextStyle(
                     fontSize: 14,
                     color: _appbartext == texts.mesAllerts
@@ -165,49 +165,47 @@ class _LayoutState extends State<Layout> {
                 leading: Icon(
                   Icons.settings_accessibility_outlined,
                   color: _appbartext == texts.mesAllerts
-                        ? Colorspick.textlidcolor
-                        : Colorspick.selectedtext, 
+                      ? Colorspick.textlidcolor
+                      : Colorspick.selectedtext,
                 ),
                 onTap: () {
                   setState(() {
-                    _appbartext = texts.mesAllerts; 
+                    _appbartext = texts.mesAllerts;
                     _page = Alerts();
                   });
                 },
               ),
             ),
-            
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: Divider(
                 height: 2,
                 indent: 10,
                 endIndent: 10,
-                color: Colors.white,  
+                color: Colors.white,
                 thickness: 3,
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.42),
             Align(
-              alignment: Alignment.bottomCenter,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.logout,
-                    color: Colors.white,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    texts.logout,  // Use Texts class variable
-                    style: TextStyle(
-                      fontSize: 20,
+                alignment: Alignment.bottomCenter,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.logout,
                       color: Colors.white,
                     ),
-                  ),
-                ],
-              )
-            )
+                    SizedBox(width: 10),
+                    Text(
+                      texts.logout, // Use Texts class variable
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ))
           ],
         ),
       ),

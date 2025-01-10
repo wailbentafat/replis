@@ -10,20 +10,18 @@ class LeaderbaordView extends ChangeNotifier {
   String error = '';
   LeaderbaordView(this.leadboarddomain);
   Future<void> getleaderboard() async {
-     bool isloading = true;
+    isLoading = true;
     notifyListeners();
     try {
       leaderboard = await leadboarddomain.getleaderboard();
-      isloading = false;
-      notifyListeners();
+      isLoading = false; 
     } catch (e) {
       error = e.toString();
-      isloading = false;
-      notifyListeners();
+      isLoading = false;
+      print(
+          'Error fetching leaderboard: $error'); 
     }
-    
 
-    
-
+    notifyListeners();
   }
 }
