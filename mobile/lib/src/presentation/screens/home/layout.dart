@@ -25,6 +25,9 @@ class _LayoutState extends State<Layout> {
     _appbartext = texts.acceuil;
     _page = home();
   }
+  void _popdrawer(){
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +67,7 @@ class _LayoutState extends State<Layout> {
                 return IconButton(
                   onPressed: () {
                     Scaffold.of(context).closeDrawer();
+
                   },
                   icon: Icon(Icons.close, color: Colors.white),
                 );
@@ -147,6 +151,7 @@ class _LayoutState extends State<Layout> {
                     _appbartext = texts.leaderboard;
                     _page = const LeaderboardScreen();
                   });
+                  Scaffold.of(context).closeDrawer();
                 },
               ),
             ),
@@ -172,7 +177,9 @@ class _LayoutState extends State<Layout> {
                   setState(() {
                     _appbartext = texts.mesAllerts;
                     _page = Alerts();
+
                   });
+
                 },
               ),
             ),
